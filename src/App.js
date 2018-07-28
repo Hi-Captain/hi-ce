@@ -1,61 +1,46 @@
 import React, { Component } from 'react';
 import './App.css';
+import draw from './canvasSet';
 
 class App extends Component {
-  componentDidMount(){
-    this._draw();
+  constructor(props) {
+    super(props)
+    this.state = {
+      left: 1,
+      right: 1
+    }
   }
+  componentDidMount(){
+    const left = this.state.left
+    const right = this.state.right
+    this._result(left, right);
+  }
+  _result(L, R){
+    let ld = document.getElementById('left-dice');
+    let ldc = ld.getContext("2d");
   
+    let rd = document.getElementById('right-dice');
+    let rdc = rd.getContext("2d");
+    
+    draw(ldc, L)
+    draw(rdc, R)
+  }
   render() {
     return (
       <div className="App">
-        <canvas id="dice" width="150" height="150" style={styles.dice}>
+        <canvas id="left-dice" width="150" height="150" style={this.styles.dice}>
+        </canvas>
+        <canvas id="right-dice" width="150" height="150" style={this.styles.dice}>
         </canvas>
       </div>
     );
   }
-
-  _draw(){
-    let el = document.getElementById('dice');
-    let ctx = el.getContext("2d");
-
-    ctx.beginPath();
-    ctx.arc(35, 35, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(115, 115, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(115, 35, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(35, 115, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(35, 75, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(115, 75, 15, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#000";
-    ctx.fill();
-  }
-}
-
-const styles = {
-  dice:{
-    border: '1px solid #333',
-    borderRadius: '10px',
-    margin: '10px'
+  styles = {
+    dice:{
+      border: '1px solid #333',
+      borderRadius: '10px',
+      margin: '10px'
+    }
   }
 }
 
