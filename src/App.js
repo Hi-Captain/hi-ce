@@ -6,41 +6,57 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      left: 1,
-      right: 1
+      rolling: true
     }
   }
+
   componentDidMount(){
-    const left = this.state.left
-    const right = this.state.right
-    this._result(left, right);
+    this._drawing();
   }
-  _result(L, R){
-    let ld = document.getElementById('left-dice');
-    let ldc = ld.getContext("2d");
-  
-    let rd = document.getElementById('right-dice');
-    let rdc = rd.getContext("2d");
-    
-    draw(ldc, L)
-    draw(rdc, R)
+
+  componentDidUpdate(){
+    this._drawing();
   }
+
   render() {
     return (
       <div className="App">
-        <canvas id="left-dice" width="150" height="150" style={this.styles.dice}>
-        </canvas>
-        <canvas id="right-dice" width="150" height="150" style={this.styles.dice}>
-        </canvas>
+        <div className="Dice-wrap">
+          <canvas id="left-dice" width="150" height="150" style={this.styles.dice}>
+          </canvas>
+          <canvas id="right-dice" width="150" height="150" style={this.styles.dice}>
+          </canvas>
+        </div>
+        <button id="roll" onClick={this._rolling}>Roll !</button>
       </div>
     );
   }
+
   styles = {
     dice:{
       border: '1px solid #333',
       borderRadius: '10px',
       margin: '10px'
     }
+  }
+
+  _rolling = () => {
+    this.setState({
+      rolling: !this.state.rolling
+    })
+  }
+
+  _drawing = () => {
+    var ld, ldc, rd, rdc
+
+    ld = document.getElementById('left-dice');
+    ldc = ld.getContext("2d");
+
+    rd = document.getElementById('right-dice');
+    rdc = rd.getContext("2d");
+
+    draw(ld, ldc)
+    draw(rd, rdc)
   }
 }
 

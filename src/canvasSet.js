@@ -1,24 +1,30 @@
-const draw = function(target, value) {
+const draw = function(canvas, target) {
+  var value = Math.floor(Math.random() * 6) + 1;
+
   switch (value){
-    case 1: draw1(target); break;
-    case 2: draw2(target); break;
-    case 3: draw3(target); break;
-    case 4: draw4(target); break;
-    case 5: draw5(target); break;
-    case 6: draw6(target); break; 
+    case 1: draw1(canvas, target); break;
+    case 2: draw2(canvas, target); break;
+    case 3: draw3(canvas, target); break;
+    case 4: draw4(canvas, target); break;
+    case 5: draw5(canvas, target); break;
+    case 6: draw6(canvas, target); break; 
     default:
       console.log('not allow')
   }
 }
 
-function draw1(target){
+function draw1(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(75, 75, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
   target.fill();
 }
 
-function draw2(target){
+function draw2(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(35, 35, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
@@ -30,7 +36,9 @@ function draw2(target){
   target.fill();
 }
 
-function draw3(target){
+function draw3(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(35, 35, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
@@ -47,7 +55,9 @@ function draw3(target){
   target.fill();
 }
 
-function draw4(target){
+function draw4(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(35, 35, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
@@ -69,7 +79,9 @@ function draw4(target){
   target.fill();
 }
 
-function draw5(target){
+function draw5(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(35, 35, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
@@ -96,7 +108,9 @@ function draw5(target){
   target.fill();
 }
 
-function draw6(target){
+function draw6(canvas, target){
+  canvas.width = canvas.width
+
   target.beginPath();
   target.arc(35, 35, 15, 0, Math.PI * 2, true);
   target.fillStyle = "#000";
